@@ -42,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
+
 export default function SimplePaper(props) {
   const classes = useStyles();
   const {
@@ -52,6 +53,8 @@ export default function SimplePaper(props) {
 
   const toggle = () => setModal(!modal);
 
+ 
+  
 
   return (
 
@@ -86,7 +89,7 @@ export default function SimplePaper(props) {
           <ListGroup>
             <ListGroupItem className={classes.list1} >
              <Typography className={classes.text}>
-                Cras justo odio
+                Nape sih, Ayo dong bisa 
                 </Typography>
               <ModalEdit  />
      

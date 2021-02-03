@@ -4,11 +4,12 @@ import {Container } from '@material-ui/core'
 import Heading from './Component/heading'
 import AddTodo from './Component/AddTodo'
 import SignIn from './Component/SignIn'
-
-
+import Coba from './Component/coba'
+import React from 'react'
 
 export default function App (){
 
+  
   return (
 
     <div className="App">
@@ -16,7 +17,7 @@ export default function App (){
       <Container maxWidth="lg"className="layout" >
         <AddTodo/>
       </Container>
-          
+      <Coba/>
     </div>
   );
 }

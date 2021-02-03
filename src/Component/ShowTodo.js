@@ -1,7 +1,7 @@
 import React , {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {Paper, Grid, Typography,Button, IconButton,  } from '@material-ui/core';
-import { ListGroup, ListGroupItem, Modal,  ModalHeader, ModalBody, ModalFooter, Input, Form, Label, FormGroup, } from 'reactstrap';
+import { ListGroup, ListGroupItem, Modal,  ModalHeader, ModalBody, ModalFooter, Input, Collapse, CardBody, Card } from 'reactstrap';
 import { MoreHoriz } from '@material-ui/icons';
 
 const useStyles = makeStyles({
@@ -26,7 +26,6 @@ const useStyles = makeStyles({
 export default function SimplePaper(props) {
   const classes = useStyles();
   const {
-   
     className
   } = props;
 
@@ -34,6 +33,17 @@ export default function SimplePaper(props) {
 
   const toggle = () => setModal(!modal);
 
+  const [state, setState] = React.useState({
+    gilad: true,
+  });
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggle1 = () => setIsOpen(!isOpen);
+
+  
+  
+  const oke = [gilad].filter((v) => v).length !== 2;
   return (
     <div   >
       <Paper className={classes.page}  elevation={0}>
@@ -59,7 +69,12 @@ export default function SimplePaper(props) {
                 </Typography>
             </ListGroupItem>
             <ListGroupItem>
-               <Input type="text" name="add item" id="exampletext" placeholder="add item" style={{border: 0}} />
+               <Input type="text" name="add item" id="exampletext" placeholder="add item" style={{border: 0}} onClick={toggle1} />
+               <Collapse isOpen={isOpen}>
+                <Card>
+                  <Button>Save</Button>
+                </Card>
+              </Collapse>
             </ListGroupItem>
           </ListGroup>
            </Grid>
