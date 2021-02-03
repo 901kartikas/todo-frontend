@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Paper, Grid, Typography, IconButton, Button } from '@material-ui/core';
 import ShowTodo from './ShowTodo'
 import AddIcon from '@material-ui/icons/Add';
-import { ListGroup, ListGroupItem, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input } from 'reactstrap';
+import { ListGroup, Label ,ListGroupItem, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Input } from 'reactstrap';
 import ModalEdit from './modalEdit'
 
 const useStyles = makeStyles((theme) => ({
@@ -67,7 +67,12 @@ export default function SimplePaper(props) {
               <ModalHeader toggle={toggle}>Judul Todo </ModalHeader>
               <ModalBody>
                 <FormGroup>
-                  <Input type="textarea" name="text" id="exampleText" />
+                  <Label for="exampleTitle">Title List</Label>
+                  <Input type="text" name="text" id="exampleText"  placeholder="Your Title List Here" />
+                </FormGroup>
+                <FormGroup>
+                  <Label for="exampleList">Your List</Label>
+                  <Input type="textarea" name="text" id="exampleText" placeholder="Your List Here" />
                 </FormGroup>
               </ModalBody>
               <ModalFooter>
@@ -79,9 +84,8 @@ export default function SimplePaper(props) {
 
           {/* list */}
           <ListGroup>
-            <ListGroupItem className={classes.list1}>
-             <Input type="checkbox" name="check" id="exampleCheck" className={classes.btnCheck}/>
-              <Typography className={classes.text}>
+            <ListGroupItem className={classes.list1} >
+             <Typography className={classes.text}>
                 Cras justo odio
                 </Typography>
               <ModalEdit  />
