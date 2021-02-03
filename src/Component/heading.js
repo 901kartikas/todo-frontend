@@ -1,34 +1,46 @@
-import React from 'react';
-import { AppBar, Toolbar, Grid, Button} from '@material-ui/core'
-
-// const useStyles = makeStyles({
-//   head: {
-//     flexDirection:'column'
-//   },
-
- 
-// });
-
-export default function ButtonAppBar() {
-  // const classes = useStyles();
-
-  return (
-    <div >
-
-      <AppBar position="static">
-        <Toolbar>
-          <Grid Container>
-            <Grid item xs={6} sm={3} >
-              <Button>logout</Button>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Button>avatar</Button>
-            </Grid>
-          </Grid>
-        </Toolbar>
-      </AppBar>
+import React from 'react'
+import { AppBar, Toolbar, Grid, IconButton, Typography, makeStyles } from '@material-ui/core'
+import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 
 
-    </div>
-  );
+const useStyles = makeStyles(theme => ({
+    root: {
+        backgroundColor: '#fff',
+        
+    },
+    searchInput: {
+        opacity: '0.6',
+        padding: `0px ${theme.spacing(1)}px`,
+        fontSize: '0.8rem',
+        '&:hover': {
+            backgroundColor: '#f2f2f2'
+        },
+        '& .MuiSvgIcon-root': {
+            marginRight: theme.spacing(1)
+        }
+    }
+}))
+
+export default function Header() {
+
+    const classes = useStyles();
+
+    return (
+        <AppBar position="static" className={classes.root}>
+            <Toolbar>
+                <Grid container
+                    alignItems="center">
+                    <Grid item>
+                        <Typography style={{color:'#000'}}>Todo List</Typography>
+                    </Grid>
+                    <Grid item sm></Grid>
+                    <Grid item>
+                        <IconButton>
+                            <PowerSettingsNewIcon fontSize="small" />
+                        </IconButton>
+                    </Grid>
+                </Grid>
+            </Toolbar>
+        </AppBar>
+    )
 }
