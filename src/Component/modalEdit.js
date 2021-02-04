@@ -24,18 +24,16 @@ const ModalExample = (props) => {
           <FormGroup>
             <Label for="exampleSelect">Change Title</Label>
             <Input type="select" name="select" id="exampleSelect">
-              <option>1</option>
-              <option>2</option>
+              <option>Belajar</option>
+              <option>Makan</option>
               </Input>
-          </FormGroup>
-          <FormGroup style={{flexDirection:'row', border: '1px'}}>
-            <p>Delete Todo List</p>
-            <IconButton><DeleteIcon/></IconButton>
+              <Input type="text" style={{marginTop:10}}></Input>
           </FormGroup>
          </Form>
         </ModalBody>
         <ModalFooter>
           <Button color="primary" onClick={toggle}>Save</Button>{' '}
+          <Button color="danger" onClick={toggle}>Delete<DeleteIcon/></Button>
           <Button color="secondary" onClick={toggle}>Cancel</Button>
         </ModalFooter>
       </Modal>
