@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input } from 'reactstrap';
-import {IconButton,  Button,  } from '@material-ui/core';
-import MoreHoriz from   '@material-ui/icons/MoreHoriz';
+import {  Button  } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 
@@ -16,7 +15,6 @@ const ModalExample = (props) => {
 
   return (
     <div>
-      <IconButton  onClick={toggle}> <MoreHoriz/></IconButton>
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>Edit</ModalHeader>
         <ModalBody>

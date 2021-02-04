@@ -3,6 +3,7 @@ import { ListGroup, ListGroupItem, Input, Container } from "reactstrap";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import IconButton from "@material-ui/core/IconButton";
 import Checkbox from "@material-ui/core/Checkbox";
+import MoreHoriz from   '@material-ui/icons/MoreHoriz';
 
 const TodoList = (props) => {
   return (
@@ -20,7 +21,7 @@ const TodoList = (props) => {
           <Checkbox size="small" />
           Belajar Fisika
           <IconButton size="small" style={{ float: "right" }}>
-            <MoreHorizIcon />
+            <MoreHoriz />
           </IconButton>
         </ListGroupItem>
       </ListGroup>
