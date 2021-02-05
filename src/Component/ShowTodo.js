@@ -12,6 +12,8 @@ import {
   Input,
   Collapse,
   Card,
+  FormGroup,
+  Label
 } from "reactstrap";
 import { MoreHoriz } from "@material-ui/icons";
 
@@ -64,7 +66,7 @@ export default function SimplePaper(props) {
             </div>
 
             {/* Button untuk modal */}
-            <div style={{ float: "right", display: "flex", flex: 1, }}>
+            <div style={{ float: "right", display: "flex", flex:1 }}>
               <IconButton onClick={toggle}>
                 <MoreHoriz />
               </IconButton>
@@ -73,19 +75,24 @@ export default function SimplePaper(props) {
 
           {/* Modal */}
           <Modal isOpen={modal} toggle={toggle} className={className}>
-            <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+            <ModalHeader toggle={toggle}>Customize Your List</ModalHeader>
             <ModalBody>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            <FormGroup>
+                <Label for="exampleTitle">Edit List Title</Label>
+                <Input
+                  type="text"
+                  name="text"
+                  id="exampleText"
+                  placeholder="Your Title List Here"
+                />
+              </FormGroup>
             </ModalBody>
             <ModalFooter>
               <Button color="primary" onClick={toggle}>
-                Do Something
+                Save
+              </Button>
+              <Button color="danger" onClick={toggle}>
+                Delete
               </Button>
               <Button color="secondary" onClick={toggle}>
                 Cancel
@@ -108,12 +115,12 @@ export default function SimplePaper(props) {
                   <Checkbox size="small" />
                 </div>
                 <div style={{ display: "flex", flex: 13 }}>
-                  <Typography style={{ paddingTop: 8 }}>
+                  <Typography style={{ paddingTop: 13 }}>
                     Beli Sabun Merk Rinso 500g
                   </Typography>
                 </div>
                 {/* Button untuk modal */}
-                <div style={{ float: "right", display: "flex", }}>
+                <div style={{ float: "right", display: "flex"}}>
                   <IconButton onClick={toggle}>
                     <MoreHoriz />
                   </IconButton>

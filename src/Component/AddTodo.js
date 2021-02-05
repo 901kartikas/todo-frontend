@@ -59,15 +59,6 @@ export default function SimplePaper(props) {
                   placeholder="Your Title List Here"
                 />
               </FormGroup>
-              <FormGroup>
-                <Label for="exampleList">Your List</Label>
-                <Input
-                  type="textarea"
-                  name="text"
-                  id="exampleText"
-                  placeholder="Your List Here"
-                />
-              </FormGroup>
             </ModalBody>
             <ModalFooter>
               <Button color="primary" onClick={toggle}>
