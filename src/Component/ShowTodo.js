@@ -127,6 +127,32 @@ export default function SimplePaper(props) {
                 </div>
               </div>
             </ListGroupItem>
+                      {/* Modal */}
+          <Modal isOpen={modal} toggle={toggle} className={className}>
+            <ModalHeader toggle={toggle}>Customize Your List</ModalHeader>
+            <ModalBody>
+            <FormGroup>
+                <Label for="exampleTitle">Edit List Title</Label>
+                <Input
+                  type="text"
+                  name="text"
+                  id="exampleText"
+                  placeholder="Your List Here"
+                />
+              </FormGroup>
+            </ModalBody>
+            <ModalFooter>
+              <Button color="primary" onClick={toggle}>
+                Save
+              </Button>
+              <Button color="danger" onClick={toggle}>
+                Delete
+              </Button>
+              <Button color="secondary" onClick={toggle}>
+                Cancel
+              </Button>
+            </ModalFooter>
+          </Modal>
             <ListGroupItem>
               <Input
                 type="text"
