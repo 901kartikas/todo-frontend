@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -10,6 +10,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -30,10 +31,48 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
 }));
+  
+  
+
+
 
 export default function SignUp() {
   const classes = useStyles();
-
+  const [fullName, setFullName] = useState('');
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const onChange1 = (e) => {
+    setFullName(e.target.value);
+  }
+  const onChange2 = (e) => {
+    setUsername(e.target.value);
+  }
+  const onChange3 = (e) => {
+    setEmail(e.target.value);
+  }
+  const onChange4 = (e) => {
+    setPassword(e.target.value);
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = {
+      fullName,
+      username,
+      email,
+      password
+    }
+    axios.post("http://192.168.0.198:5001/api/ApplicationUser/Register", data).then(
+      res => {
+        console.log(res);
+      }
+    ).catch(
+      err => {
+        console.log(err);
+      }
+    )
+  };
+  
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -44,29 +83,31 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} onSubmit={handleSubmit} noValidate>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12}>
               <TextField
                 autoComplete="fname"
-                name="firstName"
-                variant="outlined"
                 required
                 fullWidth
-                id="firstName"
-                label="First Name"
+                label="Full Name"
                 autoFocus
+                onChange={onChange1}
+                value={fullName}
+                
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12}>
               <TextField
+                autoComplete="fname"
                 variant="outlined"
                 required
                 fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
+                label="Username"
+                autoFocus
+                onChange={onChange2}
+                value={username}
+
               />
             </Grid>
             <Grid item xs={12}>
@@ -74,10 +115,12 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
-                id="email"
                 label="Email Address"
-                name="email"
                 autoComplete="email"
+                onChange={onChange3}
+                value={email}
+
+
               />
             </Grid>
             <Grid item xs={12}>
@@ -85,11 +128,13 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
-                name="password"
                 label="Password"
                 type="password"
-                id="password"
                 autoComplete="current-password"
+                onChange={onChange4}
+                value={password}
+
+
               />
             </Grid>
           </Grid>

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-const baseUrl = "http://192.168.0.198:5001/api/"
+const baseUrl = "http://192.168.0.198:5001/api/";
 
 export default {
     todoCategory(url = baseUrl + 'TodoCategory/') {
