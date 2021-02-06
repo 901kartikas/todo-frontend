@@ -47,6 +47,9 @@ export default function SimplePaper(props) {
 
   const toggle1 = () => setIsOpen(!isOpen);
 
+  const [modalList, setModalList] = useState(false);
+
+  const toggleList = () => setModalList(!modalList);
   return (
     <div>
       <Paper className={classes.page} elevation={0}>
@@ -65,7 +68,7 @@ export default function SimplePaper(props) {
               </Typography>
             </div>
 
-            {/* Button untuk modal */}
+            {/* Button untuk modal edit judul list*/}
             <div style={{ float: "right", display: "flex", flex:1 }}>
               <IconButton onClick={toggle}>
                 <MoreHoriz />
@@ -73,7 +76,7 @@ export default function SimplePaper(props) {
             </div>
           </div>
 
-          {/* Modal */}
+          {/* Modal edit judul list */}
           <Modal isOpen={modal} toggle={toggle} className={className}>
             <ModalHeader toggle={toggle}>Customize Your List</ModalHeader>
             <ModalBody>
@@ -121,34 +124,35 @@ export default function SimplePaper(props) {
                 </div>
                 {/* Button untuk modal */}
                 <div style={{ float: "right", display: "flex"}}>
-                  <IconButton onClick={toggle}>
+                  <IconButton onClick={toggleList}>
                     <MoreHoriz />
                   </IconButton>
                 </div>
               </div>
             </ListGroupItem>
                       {/* Modal */}
-          <Modal isOpen={modal} toggle={toggle} className={className}>
-            <ModalHeader toggle={toggle}>Customize Your List</ModalHeader>
+          <Modal isOpen={modalList} toggle={toggleList} className={className}>
+            <ModalHeader toggle={toggleList}>Customize Your List</ModalHeader>
             <ModalBody>
             <FormGroup>
-                <Label for="exampleTitle">Edit List Title</Label>
+                <Label for="exampleTitle">Edit List </Label>
                 <Input
                   type="text"
                   name="text"
                   id="exampleText"
                   placeholder="Your List Here"
+                  
                 />
               </FormGroup>
             </ModalBody>
             <ModalFooter>
-              <Button color="primary" onClick={toggle}>
+              <Button color="primary" onClick={toggleList}>
                 Save
               </Button>
-              <Button color="danger" onClick={toggle}>
+              <Button color="danger" onClick={toggleList}>
                 Delete
               </Button>
-              <Button color="secondary" onClick={toggle}>
+              <Button color="secondary" onClick={toggleList}>
                 Cancel
               </Button>
             </ModalFooter>
@@ -160,7 +164,7 @@ export default function SimplePaper(props) {
                 id="exampletext"
                 placeholder="Add To Do Items"
                 style={{ border: 0 }}
-                onClick={toggle1}
+                onClick={toggle1} 
               />
               <Collapse style={{ marginTop: 15 }} isOpen={isOpen}>
                 <Card>

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import * as actions from "../../Actions/todoCategory"
 import { Grid, Typography, IconButton, Button } from "@material-ui/core";
-import ShowTodo from "./ShowTodo";
+import ShowTodo from "../TodoList/ShowTodo";
 import AddIcon from "@material-ui/icons/Add";
 import {
   ListGroup,
@@ -14,8 +15,13 @@ import {
   Input,
   Badge,
 } from "reactstrap";
+import { connect } from "react-redux";
 
-export default function SimplePaper(props) {
+function SimplePaper(props) {
+  useEffect(() => {
+    props.fetchAllTodoCategories()
+  }, [])
+
   const { className } = props;
 
   const [modal, setModal] = useState(false);
@@ -72,14 +78,19 @@ export default function SimplePaper(props) {
         </div>
 
         {/* list */}
-        <ListGroup>
+        {
+        props.todoCategoryList.map((record, index) => {
+        return (
+        <ListGroup key={index} hover >
           <ListGroupItem style={{}}>
-            Belanja
+            {record.categoryTitle}
             <Badge pill style={{ float: "right" }}>
               1
             </Badge>
           </ListGroupItem>
-        </ListGroup>
+        </ListGroup>)
+        })
+      }
       </Grid>
       <Grid item xs={8}>
         <ShowTodo />
@@ -87,3 +98,13 @@ export default function SimplePaper(props) {
     </Grid>
   );
 }
+
+const mapStateToProps = state => ({
+    todoCategoryList: state.todoCategory.list
+})
+
+const mapActiontoProps = {
+  fetchAllTodoCategories: actions.fetchAll
+}
+
+export default connect(mapStateToProps, mapActiontoProps)(SimplePaper);
