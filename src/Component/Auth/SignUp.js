@@ -11,6 +11,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import axios from 'axios';
+import {Redirect} from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -62,7 +63,7 @@ export default function SignUp() {
       email,
       password
     }
-    axios.post("http://192.168.0.198:5001/api/ApplicationUser/Register", data).then(
+    axios.post("http://192.168.0.198:5000/api/ApplicationUser/Register", data).then(
       res => {
         console.log(res);
       }
@@ -70,8 +71,10 @@ export default function SignUp() {
       err => {
         console.log(err);
       }
-    )
+    ) 
   };
+
+
   
   return (
     <Container component="main" maxWidth="xs">
@@ -88,6 +91,7 @@ export default function SignUp() {
             <Grid item xs={12}>
               <TextField
                 autoComplete="fname"
+                variant="outlined"
                 required
                 fullWidth
                 label="Full Name"
@@ -99,7 +103,7 @@ export default function SignUp() {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                autoComplete="fname"
+                autoComplete="uname"
                 variant="outlined"
                 required
                 fullWidth
@@ -133,7 +137,6 @@ export default function SignUp() {
                 autoComplete="current-password"
                 onChange={onChange4}
                 value={password}
-
 
               />
             </Grid>
