@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-const baseUrl = "http://192.168.0.198:5000/api/";
+const baseUrl = "http://192.168.43.13:5000/api/";
 
 export default {
     

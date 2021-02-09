@@ -1,9 +1,4 @@
 import React, { Component } from "react";
-import { Container } from "@material-ui/core";
-import AddTodo from "../Component/TodoCategory/AddTodo";
-import {store} from "../Actions/store";
-import {Provider} from "react-redux";
-import Header from '../Component/Shared/heading';
 import axios from 'axios';
 
 export default class HalamanUtama extends Component {
@@ -17,9 +12,11 @@ export default class HalamanUtama extends Component {
       }
     }
 
-    axios.get("http://192.168.0.198:5000/api/todoCategory", config).then(
+    axios.get('http://192.168.43.13:5000/api/TodoCategory', config).then(
       res => {
-        console.log(res);
+        this.setState({
+          todoCategory: res.data
+        });
       }
     ).catch(
       err => {
@@ -27,23 +24,13 @@ export default class HalamanUtama extends Component {
       }
     )
   };
-
+ 
 
   render() {
-     if(this.state.user){
+     if(this.state.todoCategory){
        return(
-         <h2>HI {this.state.user.username}</h2>
+         <h2>List{this.state.todoCategory.data}</h2>
        )
      }
-    return (
-      <div>
-        <Provider store={store}>
-          <Header/>
-          <Container maxWidth="lg" className="layout">
-            <AddTodo />
-          </Container>
-        </Provider>
-      </div>
-    );
   }
 }
